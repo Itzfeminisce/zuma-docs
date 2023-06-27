@@ -1,0 +1,40 @@
+<footer class="mt-5 p-3 text-center max-w-md bg-slate-700/50 rounded-tl-2xl rounded-tr-2xl min-w-full w-screen">
+ <h3 class="leading-5 text-white">
+     
+Subscribe to our newsletter
+ </h3>   
+<p class="text-base text-slate-500">
+The latest news, articles, and resources, sent to your inbox weekly.
+</p>
+<div class="flex items-center justify-center">
+        <div class="icon">
+            <img width="50" height="50" loading="lazy" src="/resources/images/fb.svg" alt="">
+        </div>
+        <div class="icon">
+    <img width="50" height="50" loading="lazy" src="/resources/images/linkedin.svg" alt="">
+        </div>
+        <div class="icon">
+    <img width="50" height="50" loading="lazy" src="/resources/images/gh.svg" alt="">
+        </div>
+    </div>
+    <p class="mt-5 text-base text-white text-xs">&copy;2020 Your Company, Inc. All rights reserved.</p>
+</footer>
+
+      <script type="module" src="/resources/javascripts/main.js"></script> 
+        <script src="/resources/javascripts/prism.js"></script>
+      <script src="node_modules/eruda/eruda.js"></script> 
+        <script>
+            (function () {
+                var src = "//cdn.jsdelivr.net/npm/eruda";
+                if (
+                    !/eruda=true/.test(window.location) &&
+                    localStorage.getItem("active-eruda") != "true"
+                )
+                    return;
+                document.write("<scr" + 'ipt loading="lazy" src="' + src + '"></scr' + "ipt>");
+                document.write("<scr" + "ipt>eruda.init();</scr" + "ipt>");
+            })();
+        </script>
+    </body>
+</html>
+ 

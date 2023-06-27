@@ -1,0 +1,71 @@
+<%- include('../partials/app') %>
+<hearder class="text-white">
+<%- include('../partials/navbar') %>
+<%- include('../partials/links') %>
+</hearder>
+<main class="text-white p-5">
+    <h1 class="lead-h1">Get Started</h1>
+    <hr />
+    <h3 class="lead-h3">Installation</h3>
+<p class="lead-p">Install our app by simply adding one of the following CDN to your app</p>
+
+        <div class="code line-3">
+          <p class="title">index.html</p>
+          <pre><code class="language-html snippet p-2">&lt;script src="https://cdn.jsdelivr.net/npm/zuma-ui@latest"&gt;&lt;/script&gt;
+   // or 
+&lt;script src="unpkg.com/zuma@latest"&gt;&lt;/script&gt;</code></pre>
+        </div>
+
+
+<h3 class="lead-h3">Integration</h3>
+<p class="lead-p">
+          We will need your consent to inject our app into your page
+</p>
+
+      <div class="code">
+        <p class="title">index.html</p>
+        <pre><code class="language-html snippet line-2">&lt;div id="zuma"&gt;&lt;/div&gt;</code></pre>
+      </div>
+
+<h3 class="lead-h3">Instantiation</h3>
+<p class="lead-p">
+Our app is now available for access on <span class="lead-code">window.Zuma</span> as function. We can
+        now safely call the function and pass our recently created launcher in
+        <span class="lead-code">index.html</span></p>
+      <div class="code line-4">
+        <p class="title">script.js</p>
+        <pre><code class="language-js snippet">window.addEventListener("load", () => {
+  
+  const {default: App} = Zuma
+ 
+  const launcher = document.getElementById("zuma");
+  
+  try {
+    const engine = App(launcher);
+    engine.startApp();
+     } catch (e) {
+   // Handle error
+ }
+});</code></pre>
+      </div>
+
+
+    <h3 class="lead-h3">Result</h3>
+      <p class="lead-p">
+        You can now refresh your page. If all things go well, you should see a
+        floating button at the bottom-left corner of your page. Viola!
+      </p>
+      <div class="lead-img">
+          <img src="/resources/images/zumaui.jpg" />
+      </div>
+   
+   
+   <hr class="mt-10"/>
+   <div class="grid grid-cols-2 space-x-5">
+       <button class="border border-slate-500/50 rounded-lg py-2 px-4">Installation</button>
+      
+       <button class="border border-slate-500/50 rounded-lg py-2 px-4">Configuration</button>
+   </div> 
+      
+</main>
+<%- include('../partials/footer') %>

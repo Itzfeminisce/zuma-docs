@@ -1,0 +1,60 @@
+
+<%- include('partials/app',{metadata}) %>
+
+        <header class="h-screen w-screen text-white p-3">
+<%- include('partials/navbar') %>
+            <div
+                class="text-center flex flex-col items-center justify-center mt-[10%] space-y-10"
+            >
+                <h1 class="text-5xl font-extrabold font-narrow font-bold p-4">
+                    Responding to user's FAQs and Enquiries just got much easier
+                </h1>
+
+                <p class="text-slate-500 text-xl">
+                    You can boost your client connectivity
+                    <span class="text-blue-500 font-extrabold">100x</span>
+                    faster than it used to be without writing much
+                    <i class="font-mono text-blue-500">
+                        &lt;codes <span class="text-red-500">/</span>&gt;
+                    </i>
+                </p>
+                <p class="text-blue-500 font-light">Current Version: <span class="text-slate-500 font-extrabold">6.0.10</span></p>
+                <a
+                    href="/getting-started"
+                    class="mt-5 bg-blue-500 px-5 py-3 w-[80%] rounded-2xl font-bold font-narrow"
+                    >Get Started</a
+                >
+            </div>
+        </header>
+
+        <section class="text-white">
+            <h1
+                class="text-2xl font-narrow text-center mb-1 mt-auto font-extrabold headline uppercase text-slate-500"
+            >
+                Disposables
+            </h1>
+            <div
+                class="p-5 border-t-[0.5] border-t-slate-200 showcase-cards items-center"
+            >
+                <% (metadata.navigations||[]).forEach((card, i)=>{ %>
+                <%- include('partials/card',{card,length:metadata.length}) %>
+                <% }) %>
+                       <a href="#" class="line-gradient">
+                    <div class="card flex items-center justify-center text-2xl font-extrabold">
+                        <div class="icon"><img width="50" height="50" loading="lazy" src="/resources/images/arrow-right.svg" alt=""></div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+<%- include('partials/footer') %>
+
+
+
+
+
+
+
+
+
+  

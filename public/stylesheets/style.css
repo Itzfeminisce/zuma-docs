@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.code {
+    max-width: 100%;
+    max-height: 100px;
+    background: black;
+    color: white;
+    margin: 1em auto 3em auto;
+    border-radius: 0.5em;
+    overflow: hidden;
+    padding: 0;
+    @apply border border-slate-500/30;
+}
+.line-1 {
+    max-height: 100px;
+}
+.line-2 {
+    max-height: 200px;
+}
+.line-3 {
+    max-height: 300px;
+}
+.line-4 {
+    max-height: 400px;
+}
+.code .title {
+    padding: 0.8em;
+    font-size: small;
+    background: rgba(255, 255, 255, 0.25);
+    margin: 0;
+}
+.code .snippet {
+    background: transparent;
+    display: block;
+    overflow: scroll;
+    margin: 0.1em;
+}
+pre,
+code {
+    padding: 0;
+    margin: 0;
+    background: transparent !important;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+*::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+* {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+@layer base {
+    footer .icon{
+        @apply text-white aspect-square max-w-[30px] max-h-[30px];
+    }
+    h1:is(.lead-h1){
+        @apply font-narrow text-[2rem];
+    }
+    hr {
+        @apply opacity-25 my-4;
+    }
+    h3:is(.lead-h3) {
+        @apply font-bold my-4 text-xl before:content-["\01F517"] before:text-sm before:text-slate-300 before:pr-3 before:hover:text-white;
+    }
+    span:is(.lead-code){
+        @apply bg-slate-100/30 rounded-sm py-0.5 px-1;
+    }
+    div:is(.lead-img){
+        @apply w-full h-auto overflow-hidden rounded-xl m-5 mx-auto;
+    }
+}
+@layer components {
+    .sidebar{
+        @apply h-full w-[80%] fixed left-0 top-0 backdrop-blur-3xl backdrop-opacity-100 z-10 overflow-y-auto hidden
+    }
+    .sidebar:is(.open){
+        @apply block;
+    }
+    .lead-sidebar{
+        @apply m-5;
+    }
+    .lead-sidebar li:is(.label) {
+        @apply text-xl py-5 font-bold font-narrow before:content-["\01F517"] before:mr-3 before:text-blue-500;
+    }
+    .lead-sidebar li:not(.label) {
+        @apply p-3 pl-5 text-lg text-slate-500  border-l border-l-slate-300/20;
+    }
+    .lead-sidebar li:not(.label) > a:hover .lead-sidebar:is( li > a) {
+        @apply text-xl text-blue-500  border-l-2 border-l-blue-300;
+    }
+
+     .icon {
+                @apply w-16 h-16 rounded-full my-3 mx-auto flex items-center justify-center text-4xl;
+            }
+    .showcase-cards {
+        @apply grid grid-cols-2 gap-4;
+
+        .line-gradient {
+            @apply rounded-md bg-gradient-to-tl from-blue-300 via-blue-900 via-red-300 to-transparent p-1 h-full w-full shadow-2xl;
+        }
+        .card {
+            @apply h-full w-full bg-slate-900 p-2 text-center;
+            border-radius: inherit;
+            p {
+                @apply text-sm text-slate-400 mt-2;
+            }
+        }
+    }
+}

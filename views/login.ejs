@@ -1,0 +1,39 @@
+
+<%- include('partials/app',{metadata}) %>
+
+        <header class="">
+<%- include('partials/navbar') %>
+        </header>
+
+<section class="text-white p-5 rounded-lg bg-slate-500/30 max-w-md m-5 mb-10">
+   <div class="flex flex-col items-end justify-end mb-6 pb-2 border-b border-b-slate-500/40">
+    <h1 class="leading-8 text-3xl font-narrow mb-2">Sign In</h1>
+        <a href="/auth" class="text-slate-500">Sign Up</a>
+   </div>
+    <form>
+    <div>
+        <label for="secret-answer" class="flex items-center justify-between block my-3 text-slate-500/60">Your secret answer <span class="text-xs text-orange-500">Case Sensitive</span></label>
+        <input class="text-white text-lg block w-full p-5 rounded-sm bg-slate-500/30" id="secret-answer m-auto" placeholder="Answer..." required="required"/>
+        <p class="text-red-500 text-sm my-3">Invalid text</p>
+    </div>
+        <div class="flex items-center mb-6">
+        <input type="checkbox" class="mr-3"/>
+        <p>Remember me</p>
+        </div>
+    <button class="block p-4 rounded-lg bg-blue-500">Submit</button>
+    </form>
+    
+</section>
+
+
+<%- include('partials/footer') %>
+
+
+
+
+
+
+
+
+
+  

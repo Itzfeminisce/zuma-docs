@@ -1,0 +1,28 @@
+
+<%- include('partials/app',{metadata}) %>
+
+        <header class="">
+<%- include('partials/navbar') %>
+        </header>
+
+<section class="text-white">
+    <div class="flex items-center justify-center space-x-4 border-b border-b-slate-500/40 p-4 text-sm">
+        <a href="?path=dashboard">Dashboard</a>
+        <a href="?path=webhooks">Webhooks</a>
+        <a href="?path=api-keys">API Keys</a>
+        <a href="?path=settings">Settings</a>
+    </div>
+<%- include(`partials/${path}`) %>
+</section>
+
+<%- include('partials/footer') %>
+
+
+
+
+
+
+
+
+
+  

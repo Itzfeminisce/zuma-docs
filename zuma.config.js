@@ -1,8 +1,8 @@
 const {name, version, description} = require("./package.json")
-let appName =name.replace(/[\-\_\.]/g, " ")?.split(' ').map(it=>it.charAt(0)?.toUpperCase()+it?.slice(1))?.join(" ")
+let appName =name?.replace(/[\-\_\.]/g, " ")?.split(' ').map(it=>it.charAt(0)?.toUpperCase()+it?.slice(1))?.join(" ")
 module.exports = {
     appName:  appName || "Zuma UI",
-    version: version,
+    version: version || "6.0.11",
     description: description || `Responding to user's FAQs and Enquiries just got much easier You can boost your client connectivity 100x faster than it used to be without writing much <codes />`,
     navigations:[
         {url:"/docs/customizable",icon:"wrench.svg",title:"Customizable", description:"Built with end-user's customizations in mind"},

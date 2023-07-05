@@ -1,0 +1,149 @@
+<%- include('../partials/app') %>
+<hearder class="text-white">
+    <%- include('../partials/navbar') %>
+    <%- include('../partials/links') %>
+</hearder>
+
+
+<main class="text-white p-5">
+    <h1 class="lead-h1">Configuration</h1>
+    <hr />
+<h3 class="lead-h3">prerequisites</h3>
+<p class="lead-p">
+    Our app is designed for flexibility and fully pluggable. Meaning that almost all its components can be modified to suit our clients desire.
+</p>
+<p class="lead-p">
+    During <a href="/docs/#installation">installation</a>, <span class="func">App()</span> accepts three positional arguments, thus:
+</p>
+
+<div class="object">
+    <a href="#" class="param">launcher: <span class="type">HTMLElement</span></a>
+    <a href="#" class="param">configuration: <span class="type">Object</span></a>
+    <a href="#" class="param">conversations: <span class="type">Object</span></a>
+</div>
+
+<div>
+    <h3 class="lead-code lead-h3 nl">launcher</h3>:
+        <span class="type">HTMLElement</span>
+        <p class="lead-p">This is a container where we will inject our app launcher for interactivity. This is passed as the first argument during <a href="#instantiation">instantiation</a>. We highly recommend that you use <span class="type">div</span> element</p>
+</div>
+
+ <pre><code class="language-html snippet">
+&lt;div id="zuma"&gt;&lt;/div&gt;
+</code></pre>
+
+
+<div>
+    <h3 class="lead-code lead-h3 nl">configuration</h3>:
+        <span class="type">Object</span>
+        <p class="lead-p">
+            You can overide our predefined configuration by populating this object with valid key:value pair props to configure our app to suit your app's styling and norms.
+            </p>
+<div class="object">
+   <p class="border-b my-3 border-b-slate-500/30 py-2"> 
+   <a href="#" class="prop">prefix</a> | 
+   <span class="type">String</span> | 
+   <span class="default">""</span>
+   </p>
+   
+   <p class="border-b my-3 border-b-slate-500/30 py-2"> 
+   <a href="#" class="prop">animation</a> | 
+   <span class="type">String</span> | 
+   <span class="default">animate__fadeIn</span>
+   </p>
+   
+   <p class="border-b my-3 border-b-slate-500/30 py-2"> 
+   <a href="#" class="prop">appName</a> | 
+   <span class="type">String</span> | 
+   <span class="default">Zuma</span>
+   </p>
+   
+   <p class="border-b my-3 border-b-slate-500/30 py-2"> 
+   <a href="#" class="prop">fonts</a> | 
+   <span class="type">Object</span> | 
+   <span class="default"><a class="lead-code" href="#fonts">fonts.primary</a></span>
+   </p>
+   
+   <p class="border-b my-3 border-b-slate-500/30 py-2"> 
+   <a href="#" class="prop">isDarkTheme</a> | 
+   <span class="type">Boolean</span> | 
+   <span class="default">System</span>
+   </p>
+   
+   <p class="border-b my-3 border-b-slate-500/30 py-2"> 
+   <a href="#" class="prop">theme</a> | 
+   <span class="type">Object</span> | 
+   <span class="default"><a class="lead-code" href="#fonts">theme.light</a></span>
+   </p>
+   
+   <p class="border-b my-3 border-b-slate-500/30 py-2"> 
+   <a href="#" class="prop">launcher</a> | 
+   <span class="type">Object</span> 
+   </p>
+   
+   <p class="border-b my-3 border-b-slate-500/30 py-2"> 
+   <a href="#" class="prop">onOpen</a> | 
+   <span class="type">Callback</span>
+   </p>
+   
+   <p class="border-b my-3 border-b-slate-500/30 py-2"> 
+   <a href="#" class="prop">onClose</a> | 
+   <span class="type">Callback</span>
+   </p>
+
+</div>
+</div>
+
+
+<div>
+    <h3 class="lead-code lead-h3 nl">conversations</h3> :
+        <span class="type">Array</span>
+        <p class="lead-p">
+            This is an array of object containing 3 mandatory keys, 
+            <span class="lead-code">id <span class="type">Int</span></span>
+            <span class="lead-code">title <span class="type">String</span></span>
+            <span class="lead-code">
+                suggests
+          <span class="type">Array&lt;String&gt;</span></span>
+    </p>
+          
+<pre><code class="language-js snippet">
+const chats = [{
+    id: 0,
+    title: "This is a welcome message...",
+    suggests: ["Get Started", "Get CDN", "Back"]
+},
+{
+    id: 1,
+    title: "This is the CDN",
+    suggests:["COPY:https://...", "Another command😉"]
+}]</code></pre>
+     
+<p class="lead-p mb-3">
+In the example object above, <span class="lead-code">chat[0].suggests[1]</span><span class="ref"></span><span class="lead-code">chats[1]</span> message
+</p> 
+<p class="lead-p mb-3">When user sends a prompt message to our bot, we send back  response with your <i>chats.suggests</i> allowing them to choose and click on them, we take this message again, and send them the next corresponding <i>chats.suggests</i> that has the previous <i>suggests.id</i></p>
+
+<p class="lead-p mb-3">We understand how difficult this can seem to set up. You can take advantage to our <a class="text-blue-500" href="/chats-generator">Online Conversation Generator</a> app to quicky set it up.</p>
+     
+</div>
+
+
+
+
+  <div id="instantiation" class="code line-4">
+          <h1 class="lead-h1">Overall</h1>
+        <pre><code class="language-js snippet">// ...
+const {default: App} = Zuma
+const engine = App(launcher, configuration, conversations);
+engine.startApp();
+// ...
+</code></pre>
+      </div>
+
+
+
+
+
+</main>
+<%- include('../partials/footer') %>

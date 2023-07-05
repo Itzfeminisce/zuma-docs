@@ -1,11 +1,15 @@
 const pkg = require("./zuma.config.js");
 const express = require("express");
 const path = require("path");
+
 //const cookieParser = require("cookie-parser");
 //const logger = require("morgan");
 
 const indexRoute = require("./routes/index");
 const startRoute = require("./routes/start");
+const authRoute = require("./routes/auth");
+const userRoute = require("./routes/user");
+const apiRoute = require("./routes/api");
 
 const app = express();
 //const PORT = process.env.PORT || 3000;
@@ -22,23 +26,25 @@ app.use('/resources', express.static(path.join(__dirname, "public")));
    
 app.use((req, res, next) => {
     req.metadata = req?.metadata || pkg;
-    next()
-})
-
- //  if (req.url.startsWith("/docs")) {
-app.use("/getting-started", (req, res, next) => {
-        const url = `/docs/v${req.metadata.version}${req.url.slice(
+    if(req.url.startsWith("/docs")){
+        const url = `/v${req.metadata.version}${req.url.slice(
             "/docs".length
         )}`;
        return res.redirect(url)
-});
+    }
+    next()
+})
+
     
 
-app.use("/docs",startRoute)
+app.use("/api/:version/?",apiRoute)
+app.use("/dashboard/?",userRoute)
+app.use("/auth/?",authRoute)
+app.use("/:version/?",startRoute)
 
 app.use("/", indexRoute);
 
-/*
+
 app.use(function (req, res, next) {
     next(createError(404));
 });
@@ -53,6 +59,6 @@ app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render("404");
 });
-*/
-app.listen(process.env.PORT || 3000,()=>console.log("Serving.."))
+
+
 module.exports = app;

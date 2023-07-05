@@ -5,15 +5,13 @@
 @tailwind utilities;
 
 .code {
-    max-width: 100%;
-    max-height: 100px;
+    width: 100%;
     background: black;
     color: white;
     margin: 1em auto 3em auto;
     border-radius: 0.5em;
     overflow: hidden;
     padding: 0;
-    @apply border border-slate-500/30;
 }
 .line-1 {
     max-height: 100px;
@@ -32,12 +30,12 @@
     font-size: small;
     background: rgba(255, 255, 255, 0.25);
     margin: 0;
+    display: none;
 }
 .code .snippet {
     background: transparent;
     display: block;
     overflow: scroll;
-    margin: 0.1em;
 }
 pre,
 code {
@@ -56,6 +54,12 @@ code {
     scrollbar-width: none; /* Firefox */
 }
 @layer base {
+    a{
+        @apply hover:underline active:underline
+    }
+    input{
+        @apply !outline-none ring-0 active:outline-none focus:outline-none !border-transparent active:border-transparent;
+    }
     footer .icon{
         @apply text-white aspect-square max-w-[30px] max-h-[30px];
     }
@@ -66,16 +70,60 @@ code {
         @apply opacity-25 my-4;
     }
     h3:is(.lead-h3) {
-        @apply font-bold my-4 text-xl before:content-["\01F517"] before:text-sm before:text-slate-300 before:pr-3 before:hover:text-white;
+        @apply font-normal my-4 text-xl before:content-["\01F517"] before:text-sm before:text-slate-300 before:pr-3 before:hover:text-white font-narrow;
+        &.nl{
+        @apply before:hidden;
     }
-    span:is(.lead-code){
-        @apply bg-slate-100/30 rounded-sm py-0.5 px-1;
+    }
+    :is(.note > span){
+       @apply font-extrabold 
+    }
+    :is(.note){
+        @apply bg-orange-500/20 text-orange-500 rounded-md p-1 inline-block
+    }
+    :is(.lead-code){
+        @apply bg-slate-100/30 rounded-sm py-0.5 px-1 m-px inline-block;
     }
     div:is(.lead-img){
         @apply w-full h-auto overflow-hidden rounded-xl m-5 mx-auto;
     }
 }
 @layer components {
+    .param, .prop, .default, .ref{
+        &:before{
+        content:"@param";
+        @apply pr-3 text-xs text-blue-500;
+    }
+    }
+    .type{
+        @apply text-blue-500 text-xs;
+        &:before{
+        content:"<";
+    }
+        &:after{
+        content:">";
+    }
+    }
+    .prop{
+        @apply before:content-["@prop"]
+    }
+    .default:before{
+        content: "@default";
+        padding-right: .5em;
+    }
+    .ref{
+        @apply before:content-["\002192"] before:text-3xl before:p-0;
+        padding: .5em;
+    }
+    .object{
+        @apply text-sm p-5
+    }
+    
+    .func{
+        @apply bg-blue-500/30 text-blue-500 font-normal px-2 rounded-lg;
+    }
+    
+    
     .sidebar{
         @apply h-full w-[80%] fixed left-0 top-0 backdrop-blur-3xl backdrop-opacity-100 z-10 overflow-y-auto hidden
     }
